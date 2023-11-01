@@ -86,7 +86,7 @@ jobs:
                 isNpmInstalledForBackend=true                    
               fi
 
-              npm run lint:pipelinecheck "$file"
+              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
               #lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
               #echo "Linterror=${lintError}" 
               if [ -n "$lintError" ]; then
@@ -95,7 +95,7 @@ jobs:
                 exit 1
               fi
 
-              npm run format:pipelinecheck "$file"
+              npm run format:pipelinecheck "$GITHUB_WORKSPACE/$file"
 
               formatError=$?
 
@@ -117,7 +117,7 @@ jobs:
                 isNpmInstalledForFrontend=true
               fi
 
-              npm run lint:pipelinecheck "$file"
+              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
               #lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
 
               if [ -n "$lintError" ]; then
@@ -126,7 +126,7 @@ jobs:
                 exit 1
               fi
 
-              npm run format:pipelinecheck "$file"
+              npm run format:pipelinecheck "$GITHUB_WORKSPACE/$file"
               formatError=$?
               echo "formaterr:$formatError"
               if [ $formatError -ne 0  ]; then
