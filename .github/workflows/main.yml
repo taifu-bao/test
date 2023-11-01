@@ -86,7 +86,7 @@ jobs:
                 isNpmInstalledForBackend=true                    
               fi
 
-              lintError=$(npm run lint:pipelinecheck "$file" --silent | grep -E 'error|warning')
+              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
 
               if [ -n "$lintError" ]; then
                 echo "lint:check"
@@ -116,7 +116,7 @@ jobs:
                 isNpmInstalledForFrontend=true
               fi
 
-              lintError=$(npm run lint:pipelinecheck "$file" --silent | grep -E 'error|warning')
+              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
 
               if [ -n "$lintError" ]; then
                 echo "lint:check"
