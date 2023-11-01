@@ -43,6 +43,7 @@ jobs:
           #!/bin/bash
           PR_NUMBER=${{ github.event.pull_request.number }}
 
+          echo "abc"
           REPO="${{ github.repository }}"
 
           FILES_URL="https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/files"
