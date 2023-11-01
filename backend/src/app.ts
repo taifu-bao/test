@@ -5,7 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import { errorHandler } from "./lib/middleware/error-handler-middleware.ts";
-import { requestInfoManager } from "./lib/request-info-manager.ts";
+import { requestInfoManager } from "./lib/request-info-manager.ts"
 
 //import router
 import { router as healthCheck } from "./features/health-check/index.ts";
