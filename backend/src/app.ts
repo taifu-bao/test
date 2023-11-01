@@ -1,7 +1,7 @@
 import express, { Express, Response, Request } from "express";
 import httpContext from "express-http-context";
 import * as dotenv from "dotenv";
-import cors from "cors";
+import cors from "cors"
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import { errorHandler } from "./lib/middleware/error-handler-middleware.ts";
