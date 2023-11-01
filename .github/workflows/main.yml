@@ -85,9 +85,9 @@ jobs:
                 npm install
                 isNpmInstalledForBackend=true                    
               fi
-
-              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
-              echo "Linterror=${lintError}" 
+              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
+              #lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
+              #echo "Linterror=${lintError}" 
               if [ -n "$lintError" ]; then
                 echo "lint:check"
                 npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
