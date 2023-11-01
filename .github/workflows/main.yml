@@ -52,6 +52,7 @@ jobs:
           changedFiles=()
 
           for file in $(curl -s -H "${HEADERS}" $FILES_URL | jq -r '.[].filename'); do
+            echo "$file: $file"
             if [[ $file == *.ts || $file == *.tsx ]]; then
               changedFiles+=("$file")
             fi
