@@ -1,0 +1,101 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": ["./tsconfig.json"]
+    },
+    "plugins": ["@typescript-eslint", "check-file", "jsdoc"],
+    "rules": {
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "prefer-template": "error",
+      "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
+      "dot-notation": "error",
+      "quotes": ["error", "single", { "avoidEscape": true }],
+      "max-len": ["error", { "code": 80,
+      "ignorePattern": "^\\s*import\\s" }],
+      "jsdoc/check-indentation": "error",
+      "jsdoc/check-syntax": "error",
+      "check-file/folder-naming-convention": [
+        "error",
+        {
+          "**/": "KEBAB_CASE"
+        }
+      ],
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "**/*.{js,ts}": "KEBAB_CASE"
+        },
+        {
+          "ignoreMiddleExtensions": true
+        }
+      ],
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "variable",
+          "format": ["camelCase"]
+        },
+        { "selector": "function", "format": ["camelCase"] },
+        {
+          "selector": "class",
+          "format": ["PascalCase"]
+        },
+        {
+          "selector": "interface",
+          "format": ["PascalCase"],
+          "custom": {
+            "regex": "^I[A-Z]",
+            "match": false
+          }
+        },
+        {
+          "selector": "memberLike",
+          "modifiers": ["private"],
+          "format": ["camelCase"],
+          "leadingUnderscore": "require"
+        },
+        {
+          "selector": "method",
+          "format": ["camelCase"]
+        },
+        // PascalCase for types and type members
+        {
+          "selector": "typeAlias",
+          "format": ["PascalCase"]
+        },
+        {
+          "selector": "typeParameter",
+          "format": ["PascalCase"]
+        },
+        {
+          "selector": "typeProperty",
+          "format": ["camelCase"]
+        },
+        // PascalCase for enums and enum members
+        {
+          "selector": "enum",
+          "format": ["PascalCase"]
+        },
+        {
+          "selector": "enumMember",
+          "format": ["PascalCase"]
+        }
+      ]
+    },
+    "ignorePatterns": ["src/**/*.test.ts"],
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"]
+      }
+    ]
+  }
+  
