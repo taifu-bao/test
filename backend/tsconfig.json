@@ -1,32 +1,31 @@
 {
-    "compilerOptions": {
-      "target": "ES2022",
-      "useDefineForClassFields": true,
-      "module": "ESNext",
-      "esModuleInterop": true,
-      "lib": ["ES2022", "DOM", "DOM.Iterable"],
-      "types": ["node"],
-      "skipLibCheck": true,
-  
-      /* Bundler mode */
-      "moduleResolution": "bundler",
-      "allowImportingTsExtensions": true,
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "noEmit": true,
-  
-      /* Linting */
-      "strict": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noFallthroughCasesInSwitch": true
-    },
-    "include": [
-      "src",
-      // "prisma",
-      "/home/vsts/work/1/s/backend/src/*",
-      // "/home/vsts/work/1/s/backend/prisma/*",
-      "/home/vsts/work/1/s/backend/src/utils/types.util.ts"
-    ]
-  }
-  
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src",
+    // "prisma",
+    "/home/vsts/work/1/s/backend/src/*",
+    // "/home/vsts/work/1/s/backend/prisma/*",
+    "/home/vsts/work/1/s/backend/src/utils/types.util.ts"
+  ]
+}
