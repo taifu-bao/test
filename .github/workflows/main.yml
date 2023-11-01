@@ -1,5 +1,5 @@
 name: Build and Deploy App Into AWS
-'on':
+"on":
   pull_request:
     branches:
       - main
@@ -18,16 +18,16 @@ name: Build and Deploy App Into AWS
       - develop_pipelines.yml
       - Dockerfile
 env:
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: "**/Dockerfile"
   vmImageName: ubuntu-latest
-  tag: '${{github.run_id}}'
+  tag: "${{github.run_id}}"
   AWS_S3_BUCKET: jgrants-dev-bucket-jgrants-447776907223
-  AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-  AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+  AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+  AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   AWS_REGION: ap-northeast-1
   SOURCE_DIR: frontend/jGrant
   REPOSITORY: jgrantsv3-dev-ecr-repo-01
-  IMAGE_TAG: '${{ github.sha }}'
+  IMAGE_TAG: "${{ github.sha }}"
 jobs:
   linting_formatting:
     name: LintingFormatting
@@ -76,7 +76,7 @@ jobs:
                 isCurrentFrontend=false
               fi
 
-              if [[ "$isNpmInstalledForBackend" == false  ]]; then
+              if [[ "$isNpmInstalledForBackend" == false ]]; then
                 echo "Install package for backend with npm install" 
                 npm install
                 isNpmInstalledForBackend=true                    
@@ -98,7 +98,7 @@ jobs:
                 exit $formatError
               fi
             elif [[ "$file" == *"/frontend/"* ]]; then
-              if [[ "$isCurrentFrontend" == false  ]]; then
+              if [[ "$isCurrentFrontend" == false ]]; then
                 cd $GITHUB_WORKSPACE/frontend
                 isCurrentBackend=false  
                 isCurrentFrontend=true                  
