@@ -39,7 +39,8 @@ jobs:
         with:
           fetch-depth: 2
       - name: Get changed files
-        run: >
+        run: |
+          #!/bin/bash
           PR_NUMBER=${{ github.event.pull_request.number }}
 
           REPO="${{ github.repository }}"
@@ -50,8 +51,7 @@ jobs:
 
           changedFiles=()
 
-          for file in $(curl -s -H "${HEADERS}" $FILES_URL | jq -r
-          '.[].filename'); do
+          for file in $(curl -s -H "${HEADERS}" $FILES_URL | jq -r '.[].filename'); do
             if [[ $file == *.ts || $file == *.tsx ]]; then
               changedFiles+=("$file")
             fi
@@ -129,3 +129,4 @@ jobs:
               fi 
             fi
           done
+          shell: bash
