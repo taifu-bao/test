@@ -70,7 +70,7 @@ jobs:
           for file in ${changedFiles[@]}; do
             echo "Processing file: $file"      
             if [[ "$file" == *"/backend/"* ]]; then
-              if [[ "$isCurrentBackend" == false]]; then
+              if [[ "$isCurrentBackend" == false ]]; then
                 cd $GITHUB_WORKSPACE/backend
                 isCurrentBackend=true
                 isCurrentFrontend=false
