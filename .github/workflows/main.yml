@@ -2,7 +2,7 @@ name: Build and Deploy App Into AWS
 "on":
   pull_request:
     branches:
-      - main
+      - feature/test1
     types:
       - opened
       - edited
