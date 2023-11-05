@@ -136,15 +136,19 @@ jobs:
             fi
           done
         shell: bash
-  # deloy_aws_cdk:
-  #   name: DeployAwsCDK
-  #   runs-on: ${{env.vmImageName}}
-  #   if: github.event.pull_request.merged == true
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #     - name: Setup Nodejs
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 18
-  #     - name:
+  build_frontend:
+    name: DeployAwsCDK
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Build
+        run: |
+          cd $GITHUB_WORKSPACE/frontend
+          npm install
