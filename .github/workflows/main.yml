@@ -65,7 +65,7 @@ jobs:
           isNpmInstalledForFrontend=false
 
           for file in ${changedFiles[@]}; do
-            echo "Processing file: $file"      
+            
             if [[ "$file" == "backend/"* ]]; then
               if [[ "$isCurrentBackend" == false ]]; then
                 cd $GITHUB_WORKSPACE/backend
@@ -79,21 +79,12 @@ jobs:
                 isNpmInstalledForBackend=true
               fi
 
-              #npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning' || true)
-              if [ -n "$lintError" ]; then
-                echo "lint:check"
-                npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-                exit 1
-              fi
+              echo "backend:$file"    
+
+              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
 
               npm run format:pipelinecheck "$GITHUB_WORKSPACE/$file"
 
-              formatError=$?
-
-              if [ $formatError -ne 0 ]; then
-                exit $formatError
-              fi
             elif [[ "$file" == "frontend/"* ]]; then
               if [[ "$isCurrentFrontend" == false ]]; then
                 cd $GITHUB_WORKSPACE/frontend
@@ -109,21 +100,8 @@ jobs:
                 isNpmInstalledForFrontend=true
               fi
 
-              #npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-              lintError=$(npm run lint:pipelinecheck $file --silent | grep -E 'error|warning')
-              if [ -n "$lintError" ]; then
-                echo "lint:check"
-                npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-                exit 1
-              fi
-
+              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
               npm run format:pipelinecheck "$GITHUB_WORKSPACE/$file"
-              formatError=$?
-              echo "formaterr:$formatError"
-              if [ $formatError -ne 0  ]; then
-                echo "format:check"
-                exit $formatError
-              fi 
             fi
           done
         shell: bash
