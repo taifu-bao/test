@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cors());
 app.set("port", process.env.PORT || 8080);
 //Subsidy Router
-app.use("/", healthCheck);
+app.use("/", healthCheck)
 
 //Not in routes
 app.use(function (_req: Request, res: Response) {
