@@ -43,7 +43,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v40
 
-      - name: Filter ts and tsx file
+      - name: Check typescipt files
         run: |
           #!/bin/bash
           changedFiles=()
