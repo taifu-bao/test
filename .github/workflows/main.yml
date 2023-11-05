@@ -69,8 +69,6 @@ jobs:
             if [[ "$file" == "backend/"* ]]; then
               if [[ "$isCurrentBackend" == false ]]; then
                 cd $GITHUB_WORKSPACE/backend
-                echo "Current backend=$GITHUB_WORKSPACE"
-                echo $(ls -l $GITHUB_WORKSPACE)
                 isCurrentBackend=true
                 isCurrentFrontend=false
               fi
@@ -81,9 +79,8 @@ jobs:
                 isNpmInstalledForBackend=true                    
               fi
 
-              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-              #lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
-              #echo "Linterror=${lintError}" 
+              #npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
+              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
               if [ -n "$lintError" ]; then
                 echo "lint:check"
                 npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
@@ -112,9 +109,8 @@ jobs:
                 isNpmInstalledForFrontend=true
               fi
 
-              npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
-              #lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
-
+              #npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
+              lintError=$(npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file" --silent | grep -E 'error|warning')
               if [ -n "$lintError" ]; then
                 echo "lint:check"
                 npm run lint:pipelinecheck "$GITHUB_WORKSPACE/$file"
