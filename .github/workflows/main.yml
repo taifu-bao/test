@@ -106,6 +106,7 @@ jobs:
           done
         shell: bash
   build_frontend:
+    needs: linting_formatting
     name: DeployAwsCDK
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
