@@ -3,12 +3,10 @@ name: Build and Deploy App Into AWS
   pull_request:
     branches:
       - main
+    types: [opened]
   push:
     branches:
       - main
-    types:
-      - opened
-      - edited
     paths:
       - backend/src/*.ts
       - backend/src/*.tsx
