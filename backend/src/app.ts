@@ -8,7 +8,7 @@ import morgan from 'morgan';
 dotenv.config({ path: `.env.${process.env.NODE_ENV || 'local'}` });
 
 //Config expess
-const app: Express = express();
+const app: Express = express()
 //output request log
 app.use(httpContext.middleware)
 app.use(morgan('dev'));
