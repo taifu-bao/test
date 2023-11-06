@@ -13,7 +13,7 @@ const app: Express = express();
 app.use(httpContext.middleware);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.json())
 app.use(cors());
 app.set('port', process.env.PORT || 8080);
 //Subsidy Router
